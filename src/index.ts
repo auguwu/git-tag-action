@@ -21,11 +21,10 @@
  * SOFTWARE.
  */
 
-import { type Logger, defaultLogger } from './log';
-import { setFailed, setOutput } from '@actions/core';
+import { setFailed, setOutput, info } from '@actions/core';
 import { SemVer } from 'semver';
 
-async function main({ info }: Logger) {
+async function main() {
   info('collecting metadata...');
 
   const ref = process.env.GITHUB_REF;
@@ -52,10 +51,6 @@ async function main({ info }: Logger) {
   }
 }
 
-if (require.main === module) {
-  main(defaultLogger)
-    .then(() => process.exit(0))
-    .catch((ex) => setFailed(ex));
-}
-
-export default main;
+main()
+  .then(() => process.exit(0))
+  .catch((ex) => setFailed(ex));
