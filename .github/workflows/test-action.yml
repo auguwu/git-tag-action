@@ -49,7 +49,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Get outputs
-        uses: .
+        uses: ./
         id: tag
 
       - name: Print out outputs
