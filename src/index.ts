@@ -29,9 +29,9 @@ async function main() {
 
   const ref = process.env.GITHUB_REF;
   if (!ref) throw new Error('`GITHUB_REF` was not specified in environment variables.');
-  if (!ref.startsWith('ref/tags/')) throw new Error(`Reference tag [${ref}] was not a tagged reference.`);
+  if (!ref.startsWith('refs/tags/')) throw new Error(`Reference tag [${ref}] was not a tagged reference.`);
 
-  const version = ref.replace(/^ref\/tags\//, '');
+  const version = ref.replace(/^refs\/tags\//, '');
   setOutput('version', version);
 
   const semver = new SemVer(version);
