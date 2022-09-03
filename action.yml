@@ -1,4 +1,4 @@
-name: Git Tag Action
+name: Git Release Tag Action
 description: 🏏 GitHub action to split your Git release tag into SemVer 2.0 parts
 author: Noel <cutie@floofy.dev>
 
