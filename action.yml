@@ -1,0 +1,11 @@
+name: Git Tag Action
+description: 🏏 GitHub action to split your Git release tag into SemVer 2.0 parts
+author: Noel <cutie@floofy.dev>
+
+branding:
+  icon: battery
+  color: gray-dark
+
+runs:
+  using: node16
+  main: ./build/index.js
