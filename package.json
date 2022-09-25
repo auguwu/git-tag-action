@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@actions/core": "1.9.1",
-    "@noelware/utils": "2.2.0",
+    "@noelware/utils": "2.2.1",
     "semver": "7.3.7"
   },
   "devDependencies": {
