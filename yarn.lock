@@ -178,7 +178,7 @@ __metadata:
     "@augu/tsconfig": 1.1.1
     "@noelware/utils": 2.2.1
     "@types/node": 18.13.0
-    "@types/semver": 7.3.13
+    "@types/semver": 7.7.0
     "@typescript-eslint/eslint-plugin": 5.52.0
     "@typescript-eslint/parser": 5.52.0
     "@vercel/ncc": 0.36.1
@@ -239,10 +239,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semver@npm:7.3.13":
-  version: 7.3.13
-  resolution: "@types/semver@npm:7.3.13"
-  checksum: 00c0724d54757c2f4bc60b5032fe91cda6410e48689633d5f35ece8a0a66445e3e57fa1d6e07eb780f792e82ac542948ec4d0b76eb3484297b79bd18b8cf1cb0
+"@types/semver@npm:7.7.0":
+  version: 7.7.0
+  resolution: "@types/semver@npm:7.7.0"
+  checksum: d488eaeddb23879a0a8a759bed667e1a76cb0dd4d23e3255538e24c189db387357953ca9e7a3bda2bb7f95e84cac8fe0db4fbe6b3456e893043337732d1d23cc
   languageName: node
   linkType: hard
 
