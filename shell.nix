@@ -18,13 +18,12 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-name: Git Release Tag Action
-description: 🏏 GitHub action to split your Git release tag into SemVer 2.0 parts
-author: Noel <cutie@floofy.dev>
-branding:
-    icon: battery
-    color: gray-dark
-runs:
-    using: node20
-    main: build/index.js
+let
+  lockfile = builtins.fromJSON (builtins.readFile ./flake.lock);
+  rev = lockfile.nodes.flake-compat.locked;
+  flake-compat = builtins.fetchTarball {
+    url = "https://github.com/${rev.owner}/${rev.repo}/archive/${rev.rev}.tar.gz";
+    sha256 = rev.narHash;
+  };
+in
+  (import flake-compat {src = ./.;}).shellNix.default

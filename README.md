@@ -8,19 +8,19 @@ This is a simple action to split your **git tag**, usually for releases, into a 
 
 ```yml
 on:
-  release:
-    types:
-      - published
+    release:
+        types:
+            - published
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: auguwu/git-tag-action@master
-        id: git-tag
-      - run:
-          echo "${{ steps.outputs.git-tag.version }}"
-          # "1.0.0-alpha.3"
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: auguwu/git-tag-action@v2
+              id: git-tag
+            - run:
+                  echo "${{ steps.outputs.git-tag.version }}"
+                  # "1.0.0-alpha.3"
 ```
 
 ## Outputs

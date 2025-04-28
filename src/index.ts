@@ -1,6 +1,6 @@
 /*
- * 🏏 git-tag-action: Noelware's utilities package to not repeat code in our TypeScript projects.
- * Copyright (c) 2022 Noel <cutie@floofy.dev>
+ * 🏏 git-tag-action: GitHub action to get the release tag.
+ * Copyright (c) 2022-2025 Noel Towa <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,32 +25,32 @@ import { setFailed, setOutput, info } from '@actions/core';
 import { SemVer } from 'semver';
 
 async function main() {
-  info('collecting metadata...');
+    info('collecting metadata...');
 
-  const ref = process.env.GITHUB_REF;
-  if (!ref) throw new Error('`GITHUB_REF` was not specified in environment variables.');
-  if (!ref.startsWith('refs/tags/')) throw new Error(`Reference tag [${ref}] was not a tagged reference.`);
+    const ref = process.env.GITHUB_REF;
+    if (!ref) throw new Error('`GITHUB_REF` was not specified in environment variables.');
+    if (!ref.startsWith('refs/tags/')) throw new Error(`Reference tag [${ref}] was not a tagged reference.`);
 
-  const version = ref.replace(/^refs\/tags\//, '');
-  setOutput('version', version);
+    const version = ref.replace(/^refs\/tags\//, '');
+    setOutput('version', version);
 
-  const semver = new SemVer(version);
-  setOutput(
-    'json',
-    JSON.stringify({
-      major: semver.major,
-      minor: semver.minor,
-      patch: semver.patch,
-      prerelease: semver.prerelease.length === 0
-    })
-  );
+    const semver = new SemVer(version);
+    setOutput(
+        'json',
+        JSON.stringify({
+            major: semver.major,
+            minor: semver.minor,
+            patch: semver.patch,
+            prerelease: semver.prerelease.length === 0
+        })
+    );
 
-  setOutput('prerelease', semver.prerelease.length === 0);
-  for (const method of ['major', 'minor', 'patch']) {
-    setOutput(method, semver[method]);
-  }
+    setOutput('prerelease', semver.prerelease.length === 0);
+    for (const method of ['major', 'minor', 'patch']) {
+        setOutput(method, semver[method]);
+    }
 }
 
 main()
-  .then(() => process.exit(0))
-  .catch((ex) => setFailed(ex));
+    .then(() => process.exit(0))
+    .catch((ex) => setFailed(ex));

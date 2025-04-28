@@ -1,6 +1,6 @@
 /*
- * 🏏 git-tag-action: Noelware's utilities package to not repeat code in our TypeScript projects.
- * Copyright (c) 2022 Noel <cutie@floofy.dev>
+ * 🏏 git-tag-action: GitHub action to get the release tag.
+ * Copyright (c) 2022-2025 Noel Towa <cutie@floofy.dev>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,18 +21,17 @@
  * SOFTWARE.
  */
 
-import { info as _info, error as _error } from '@actions/core';
+import { fileURLToPath } from 'node:url';
+import noel from '@augu/eslint-config';
 
-export interface Logger {
-  error(...args: Parameters<typeof _error>): void;
-  info(...args: Parameters<typeof _info>): void;
-}
-
-export const defaultLogger: Logger = {
-  error(...args) {
-    return _error(...args);
-  },
-  info(...args) {
-    return _info(...args);
-  }
-};
+export default noel(
+    {
+        stylistic: true,
+        typescript: {
+            tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url))
+        }
+    },
+    {
+        ignores: ['**/build']
+    }
+);

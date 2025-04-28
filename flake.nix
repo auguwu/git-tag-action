@@ -18,13 +18,22 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+  };
 
-name: Git Release Tag Action
-description: 🏏 GitHub action to split your Git release tag into SemVer 2.0 parts
-author: Noel <cutie@floofy.dev>
-branding:
-    icon: battery
-    color: gray-dark
-runs:
-    using: node20
-    main: build/index.js
+  outputs = { nixpkgs, ... }: let
+    eachSystem = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+    nixpkgsFor = system: import nixpkgs { inherit system; };
+  in {
+    formatter = eachSystem(system: (nixpkgsFor system).alejandra);
+    devShells = eachSystem(system: let pkgs = nixpkgsFor system; in {
+      default = pkgs.mkShell {buildInputs = with pkgs;[bun];};
+    });
+  };
+}
