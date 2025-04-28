@@ -27,13 +27,17 @@
     };
   };
 
-  outputs = { nixpkgs, ... }: let
+  outputs = {nixpkgs, ...}: let
     eachSystem = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
-    nixpkgsFor = system: import nixpkgs { inherit system; };
+    nixpkgsFor = system: import nixpkgs {inherit system;};
   in {
-    formatter = eachSystem(system: (nixpkgsFor system).alejandra);
-    devShells = eachSystem(system: let pkgs = nixpkgsFor system; in {
-      default = pkgs.mkShell {buildInputs = with pkgs;[bun];};
+    formatter = eachSystem (system: (nixpkgsFor system).alejandra);
+    devShells = eachSystem (system: let
+      pkgs = nixpkgsFor system;
+    in {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [bun];
+      };
     });
   };
 }
