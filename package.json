@@ -18,7 +18,7 @@
     "dependencies": {
         "@actions/core": "1.11.1",
         "@noelware/utils": "2.5.1",
-        "semver": "7.7.1"
+        "semver": "7.7.2"
     },
     "devDependencies": {
         "@augu/eslint-config": "5.3.1",
