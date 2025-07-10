@@ -24,7 +24,7 @@
         "@augu/eslint-config": "5.3.1",
         "@augu/tsconfig": "1.2.0",
         "@stylistic/eslint-plugin": "5.1.0",
-        "@types/node": "24.0.12",
+        "@types/node": "24.0.13",
         "@types/semver": "7.7.0",
         "eslint": "9.30.1",
         "eslint-config-prettier": "10.1.5",
