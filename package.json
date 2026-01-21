@@ -29,7 +29,7 @@
         "eslint": "9.39.2",
         "eslint-config-prettier": "10.1.8",
         "eslint-formatter-codeframe": "7.32.2",
-        "prettier": "3.8.0",
+        "prettier": "3.8.1",
         "rimraf": "6.1.2",
         "typescript": "5.9.3",
         "typescript-eslint": "8.53.1"
