@@ -16,7 +16,7 @@
         "fmt": "prettier --write **/*.{js,ts,yaml,yml,json,md}"
     },
     "dependencies": {
-        "@actions/core": "1.11.1",
+        "@actions/core": "3.0.0",
         "@noelware/utils": "2.5.1",
         "semver": "7.7.1"
     },
