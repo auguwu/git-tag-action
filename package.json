@@ -8,7 +8,7 @@
     "author": "Noel Towa <cutie@floofy.dev>",
     "repository": "https://github.com/auguwu/git-tag-action",
     "bugs": "https://github.com/auguwu/git-tag-action/issues",
-    "packageManager": "bun@1.2.10",
+    "packageManager": "bun@1.4.2",
     "scripts": {
         "build": "bun build src/index.ts --outfile=build/index.js --minify --target node",
         "check": "prettier --check **/*.{js,ts,yaml,yml,json,md}",
